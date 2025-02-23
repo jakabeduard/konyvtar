@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<KonyLista>
+        
+    <Konyv>
+                
+        <ID>1</ID>
+                
+        <Nev>Julia</Nev>
+                
+        <Szerzo>Laszlo Laszlo</Szerzo>
+                
+        <KiadasiEv>1989</KiadasiEv>
+                
+        <ISBN>312434-42342-434</ISBN>
+                
+        <Kiado>Locitrom</Kiado>
+                
+        <Kolcsonozheto>true</Kolcsonozheto>
+            
+    </Konyv>
+        
+    <Konyv>
+                
+        <ID>2</ID>
+                
+        <Nev>Az arany ember</Nev>
+                
+        <Szerzo>Jokai Mor</Szerzo>
+                
+        <KiadasiEv>1836</KiadasiEv>
+                
+        <ISBN>1223-324-3424</ISBN>
+                
+        <Kiado>Kiado</Kiado>
+                
+        <Kolcsonozheto>true</Kolcsonozheto>
+            
+    </Konyv>
+        
+    <Konyv>
+                
+        <ID>3</ID>
+                
+        <Nev>Egri csillagok</Nev>
+                
+        <Szerzo>Gárdonyi Géza</Szerzo>
+                
+        <KiadasiEv>1899</KiadasiEv>
+                
+        <ISBN>3456-789-1234</ISBN>
+                
+        <Kiado>Mora</Kiado>
+                
+        <Kolcsonozheto>true</Kolcsonozheto>
+            
+    </Konyv>
+    
+</KonyLista>

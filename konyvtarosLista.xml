@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Konyvtarosok>
+        
+    <Konyvtaros>
+                
+        <KonyvtarosID>1</KonyvtarosID>
+                
+        <Nev>Bohoc Albert</Nev>
+                
+        <Email>bohoc@gmail.com</Email>
+                
+        <Telefon>+40720786678</Telefon>
+                
+        <AlkalmazasEve>2022</AlkalmazasEve>
+                
+        <Fizetes>4000</Fizetes>
+                
+        <Jelszo>dk57576fja</Jelszo>
+            
+    </Konyvtaros>
+        
+    <Konyvtaros>
+                
+        <KonyvtarosID>2</KonyvtarosID>
+                
+        <Nev>Alma Ferencz</Nev>
+                
+        <Email>alma@fjlas.com</Email>
+                
+        <Telefon>0745893476</Telefon>
+                
+        <AlkalmazasEve>2023</AlkalmazasEve>
+                
+        <Fizetes>3000</Fizetes>
+                
+        <Jelszo>fjaskdfj</Jelszo>
+            
+    </Konyvtaros>
+    
+</Konyvtarosok>
