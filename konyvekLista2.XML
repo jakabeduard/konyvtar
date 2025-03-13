@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<KonyLista>
+    <Konyv ID="7">
+        <Nev>Az aradfsny ember</Nev>
+        <Szerzo>Jokai Mor</Szerzo>
+        <KiadasiEv>1836</KiadasiEv>
+        <ISBN>1223-324-3424</ISBN>
+        <Kiado>Kiado</Kiado>
+        <Kolcsonozheto>true</Kolcsonozheto>
+    </Konyv>
+    <Konyv ID="8">
+        <Nev>sds</Nev>
+        <Szerzo>das</Szerzo>
+        <KiadasiEv>2</KiadasiEv>
+        <ISBN>asddas</ISBN>
+        <Kiado>asd</Kiado>
+        <Kolcsonozheto>false</Kolcsonozheto>
+    </Konyv>
+    <Konyv ID="9">
+        <Nev>6</Nev>
+        <Szerzo>fwdf</Szerzo>
+        <KiadasiEv>56</KiadasiEv>
+        <ISBN>sdfs</ISBN>
+        <Kiado>sdfs</Kiado>
+        <Kolcsonozheto>false</Kolcsonozheto>
+    </Konyv>
+    <Konyv ID="10">
+        <Nev>sdfas</Nev>
+        <Szerzo>fsd</Szerzo>
+        <KiadasiEv>435</KiadasiEv>
+        <ISBN>wert</ISBN>
+        <Kiado>erwr</Kiado>
+        <Kolcsonozheto>false</Kolcsonozheto>
+    </Konyv>
+    <Konyv ID="11">
+        <Nev>hhh</Nev>
+        <Szerzo>guigy</Szerzo>
+        <KiadasiEv>67</KiadasiEv>
+        <ISBN>hjkl</ISBN>
+        <Kiado>jnknk</Kiado>
+        <Kolcsonozheto>true</Kolcsonozheto>
+    </Konyv>
+    <Konyv ID="12">
+        <Nev>687</Nev>
+        <Szerzo>ig</Szerzo>
+        <KiadasiEv>576</KiadasiEv>
+        <ISBN>hjh</ISBN>
+        <Kiado>jhk</Kiado>
+        <Kolcsonozheto>true</Kolcsonozheto>
+    </Konyv>
+    <Konyv ID="13">
+        <Nev>gdf</Nev>
+        <Szerzo>gdsf</Szerzo>
+        <KiadasiEv>34</KiadasiEv>
+        <ISBN>dfasd</ISBN>
+        <Kiado>sdff</Kiado>
+        <Kolcsonozheto>false</Kolcsonozheto>
+    </Konyv>
+    <Konyv ID="14">
+        <Nev>gsdr</Nev>
+        <Szerzo>gdfs</Szerzo>
+        <KiadasiEv>34</KiadasiEv>
+        <ISBN>vsd</ISBN>
+        <Kiado>fsad</Kiado>
+        <Kolcsonozheto>false</Kolcsonozheto>
+    </Konyv>
+    <Konyv ID="15">
+        <Nev>fr</Nev>
+        <Szerzo>gdfs</Szerzo>
+        <KiadasiEv>4</KiadasiEv>
+        <ISBN>dfs</ISBN>
+        <Kiado>fgsd</Kiado>
+        <Kolcsonozheto>false</Kolcsonozheto>
+    </Konyv>
+    <Konyv ID="16">
+        <Nev>fa</Nev>
+        <Szerzo>sdfa</Szerzo>
+        <KiadasiEv>343</KiadasiEv>
+        <ISBN>fasd</ISBN>
+        <Kiado>dfas</Kiado>
+        <Kolcsonozheto>true</Kolcsonozheto>
+    </Konyv>
+    <Konyv ID="17">
+        <Nev>fsd</Nev>
+        <Szerzo>cdsd</Szerzo>
+        <KiadasiEv>4</KiadasiEv>
+        <ISBN>fsd</ISBN>
+        <Kiado>sds</Kiado>
+        <Kolcsonozheto>false</Kolcsonozheto>
+    </Konyv>
+</KonyLista>

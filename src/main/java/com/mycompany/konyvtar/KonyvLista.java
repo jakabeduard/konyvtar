@@ -20,6 +20,19 @@ import java.util.ArrayList;
 
 public class KonyvLista implements java.io.Serializable {
     private ArrayList<Konyv> konyvek;
+    
+//     @Override
+//    public Iterator<Konyv> iterator() {
+//        return lista.iterator();
+//    }
+//    
+
+    public int getLastID() {
+        if (this.konyvek.isEmpty()) {
+            return -1; // vagy dobhatunk egy kivételt
+        }
+        return this.konyvek.get(this.konyvek.size() - 1).getKonyv_id();
+    }
 
     public KonyvLista() {
         this.konyvek = new ArrayList<>();
@@ -28,6 +41,7 @@ public class KonyvLista implements java.io.Serializable {
     public void addKonyv(Konyv konyv) {
         konyvek.add(konyv);
     }
+
     public void torolKonyv(int konyv_id) {
         boolean removed = konyvek.removeIf(konyv -> konyv.getKonyv_id() == konyv_id);
         if (!removed) {
@@ -35,8 +49,9 @@ public class KonyvLista implements java.io.Serializable {
         }
     }
     public void updateKonyv(int konyv_id, String ujNev, String ujSzerzo, int ujEv, String ujISBN, String ujKiado, boolean ujKolcsonozheto) {
+        boolean found = false;
         for (Konyv konyv : konyvek) {
-            boolean found = false;
+            
             if (konyv.getKonyv_id() == konyv_id) {
                 konyv.setKonyv_nev(ujNev);
                 konyv.setSzerzo(ujSzerzo);
@@ -47,24 +62,38 @@ public class KonyvLista implements java.io.Serializable {
                 found = true;
                 break;
             }
-            if (!found) {
+           
+        }
+         if (!found) {
                 System.out.println("Nem letezik ilyen konyv: " + konyv_id);
             }
-        }
     }
-    public void keresKonyv(String keresett) {
-        boolean found = false;
+//    public void keresKonyv(String keresett) {
+//        boolean found = false;
+//        for (Konyv konyv : konyvek) {
+//            if (konyv.getKonyv_nev().equalsIgnoreCase(keresett) || konyv.getSzerzo().equalsIgnoreCase(keresett)) {
+//                System.out.println("Kereset konyv adatai: "+konyv.getKonyv_id() + ": " + konyv.getKonyv_nev() + ", " + konyv.getSzerzo() + ", " + konyv.getKiadasi_ev() + ", " + konyv.getISBN() + ", " + konyv.getKiado() + ", " + konyv.getKolcsonozheto());
+//                found = true;
+//            }
+//        }
+//        if (!found) {
+//            System.out.println("Nem talalhato konyv a megadott keresessel: " + keresett);
+//        }
+//    }
+    public List<Konyv> keresKonyv(String keresett) {
+        List<Konyv> talalatok = new ArrayList<>();
         for (Konyv konyv : konyvek) {
             if (konyv.getKonyv_nev().equalsIgnoreCase(keresett) || konyv.getSzerzo().equalsIgnoreCase(keresett)) {
-                System.out.println("Kereset konyv adatai: "+konyv.getKonyv_id() + ": " + konyv.getKonyv_nev() + ", " + konyv.getSzerzo() + ", " + konyv.getKiadasi_ev() + ", " + konyv.getISBN() + ", " + konyv.getKiado() + ", " + konyv.getKolcsonozheto());
-                found = true;
-            }
+                talalatok.add(konyv);
+          }
         }
-        if (!found) {
-            System.out.println("Nem talalhato konyv a megadott keresessel: " + keresett);
-        }
+        return talalatok;
     }
 
+
+    public List<Konyv> getKonyvek() {
+        return new ArrayList<>(konyvek); // Másolatot ad vissza az adatok védelme érdekében
+    }
 
 
     public void listazKonyvek() {
@@ -73,7 +102,7 @@ public class KonyvLista implements java.io.Serializable {
         }
     }
 
-    public void mentesTxt(String fileName) {
+    public void mentesKonyvTxt(String fileName) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
             oos.writeObject(this);
             System.out.println("Könyvlista sikeresen mentve: " + fileName);
@@ -82,7 +111,7 @@ public class KonyvLista implements java.io.Serializable {
         }
     }
 
-    public static KonyvLista beolvasTxt(String fileName) {
+    public static KonyvLista beolvasKonyvTxt(String fileName) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
             return (KonyvLista) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
@@ -91,7 +120,7 @@ public class KonyvLista implements java.io.Serializable {
         }
     }
 
-    public void mentesXML(String fajlNev) {
+    public void mentesKonyvXML(String fajlNev) {
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -102,11 +131,12 @@ public class KonyvLista implements java.io.Serializable {
 
             for (Konyv konyv : konyvek) {
                 Element konyvElem = doc.createElement("Konyv");
+                konyvElem.setAttribute("ID", String.valueOf(konyv.getKonyv_id()));
                 rootElement.appendChild(konyvElem);
 
-                Element idElem = doc.createElement("ID");
-                idElem.appendChild(doc.createTextNode(String.valueOf(konyv.getKonyv_id())));
-                konyvElem.appendChild(idElem);
+//                Element idElem = doc.createElement("ID");
+//                idElem.appendChild(doc.createTextNode(String.valueOf(konyv.getKonyv_id())));
+//                konyvElem.appendChild(idElem);
 
                 Element nevElem = doc.createElement("Nev");
                 nevElem.appendChild(doc.createTextNode(konyv.getKonyv_nev()));
@@ -180,7 +210,7 @@ public class KonyvLista implements java.io.Serializable {
 //
 //    }
 
-    public static KonyvLista beolvasXML(String fileName) {
+    public static KonyvLista beolvasKonyvXML(String fileName) {
         KonyvLista konyvek = new KonyvLista();
         try {
             File xmlFile = new File(fileName);
@@ -196,7 +226,7 @@ public class KonyvLista implements java.io.Serializable {
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element elem = (Element) node;
 
-                    String konyvIDStr= getElementTextContent(elem, "ID");
+                    String konyvIDStr = elem.getAttribute("ID");
                     String nev = getElementTextContent(elem, "Nev");
                     String szerzo = getElementTextContent(elem, "Szerzo");
                     String evStr = getElementTextContent(elem, "KiadasiEv");
@@ -205,30 +235,22 @@ public class KonyvLista implements java.io.Serializable {
                     String kolcsonozhetoBol = getElementTextContent(elem, "Kolcsonozheto");
 
                     if(konyvIDStr != null && nev != null && szerzo != null && evStr != null && isbn != null && kiado != null && kolcsonozhetoBol != null) {
-
                         int konyvID = Integer.parseInt(konyvIDStr);
                         int ev = Integer.parseInt(evStr);
-                        boolean kolcsonozheto= Boolean.parseBoolean(kolcsonozhetoBol);
+                        boolean kolcsonozheto = Boolean.parseBoolean(kolcsonozhetoBol);
                         Konyv konyv = new Konyv(konyvID, nev, szerzo, ev, isbn, kiado, kolcsonozheto);
                         konyvek.addKonyv(konyv);
+                    } else {
+                        System.out.println("Hiányzó adat a következő könyvnél, nem kerül hozzáadásra.");
                     }
-                     else {
-                    System.out.println("Hiányzó adat a következő könyvtárosnál, nem kerül hozzáadásra.");
-
-                     }
-                    // Create new Konyv object and add it to the KonyvLista
-
                 }
             }
-            System.out.println("Könyvtároslista sikeresen beolvasva XML-ből: " + fileName);
+            System.out.println("Könyvlista sikeresen beolvasva XML-ből: " + fileName);
         } catch (Exception e) {
             System.out.println("Hiba történt az XML beolvasása során: " + e.getMessage());
-
         }
-
         return konyvek;
     }
-
 
     private static String getElementTextContent(Element elem, String tagName) {
         NodeList nodeList = elem.getElementsByTagName(tagName);
@@ -241,7 +263,7 @@ public class KonyvLista implements java.io.Serializable {
         return null;
     }
 
-    public void modositXML(String fajlNev, int id, String ujNev, String ujSzerzo, int ujEv, String ujISBN, String ujKiado, boolean ujKolcsonozheto) {
+    public void modositKonyvXML(String fajlNev, int id, String ujNev, String ujSzerzo, int ujEv, String ujISBN, String ujKiado, boolean ujKolcsonozheto) {
         try {
             File xmlFile = new File(fajlNev);
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -255,7 +277,7 @@ public class KonyvLista implements java.io.Serializable {
                 Node node = nodeList.item(i);
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element elem = (Element) node;
-                    int currentId = Integer.parseInt(elem.getElementsByTagName("ID").item(0).getTextContent());
+                    int currentId = Integer.parseInt(elem.getAttribute("ID"));
                     if (currentId == id) {
                         elem.getElementsByTagName("Nev").item(0).setTextContent(ujNev);
                         elem.getElementsByTagName("Szerzo").item(0).setTextContent(ujSzerzo);
@@ -282,6 +304,7 @@ public class KonyvLista implements java.io.Serializable {
             System.out.println("Hiba történt az XML módosítása során: " + e.getMessage());
         }
     }
+
 }
 
 

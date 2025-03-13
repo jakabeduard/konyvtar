@@ -1,77 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Felhasznalok>
-                    
-    
-    
-    
-    <Felhasznalo>
-                                        
-        
-        
-        
-        <FelhasznaloID>1</FelhasznaloID>
-                                        
-        
-        
-        
-        <Nev>Denes Albert</Nev>
-                                        
-        
-        
-        
-        <Email>albert@jflsd.com</Email>
-                                        
-        
-        
-        
-        <Telefon>0734675467</Telefon>
-                                        
-        
-        
-        
-        <Jelszo>hdfksdjhf</Jelszo>
-                                    
-    
-    
-    
+    <Felhasznalo felhasznaloID="0">
+        <Nev>wef</Nev>
+        <Email>fd</Email>
+        <Telefon>fsd</Telefon>
+        <Jelszo>fsd</Jelszo>
     </Felhasznalo>
-                    
-    
-    
-    
-    <Felhasznalo>
-                                        
-        
-        
-        
-        <FelhasznaloID>2</FelhasznaloID>
-                                        
-        
-        
-        
-        <Nev>Kovacs Janos</Nev>
-                                        
-        
-        
-        
-        <Email>kovacs@gmail.com</Email>
-                                        
-        
-        
-        
-        <Telefon>+40720786678</Telefon>
-                                        
-        
-        
-        
-        <Jelszo>dk57576fja</Jelszo>
-                                    
-    
-    
-    
+    <Felhasznalo felhasznaloID="1">
+        <Nev>dsedf</Nev>
+        <Email>fs</Email>
+        <Telefon>dfas</Telefon>
+        <Jelszo>fasd</Jelszo>
     </Felhasznalo>
-                
-
-
-
+    <Felhasznalo felhasznaloID="2">
+        <Nev>das</Nev>
+        <Email>das</Email>
+        <Telefon>dasd</Telefon>
+        <Jelszo>sda</Jelszo>
+    </Felhasznalo>
+    <Felhasznalo felhasznaloID="3">
+        <Nev>fasdf</Nev>
+        <Email>efw</Email>
+        <Telefon>fwe</Telefon>
+        <Jelszo>efqwe</Jelszo>
+    </Felhasznalo>
+    <Felhasznalo felhasznaloID="4">
+        <Nev>erwe</Nev>
+        <Email>ert</Email>
+        <Telefon>67</Telefon>
+        <Jelszo>dfsdg</Jelszo>
+    </Felhasznalo>
+    <Felhasznalo felhasznaloID="5">
+        <Nev>fedfwegdsfg</Nev>
+        <Email>fgsdf</Email>
+        <Telefon>67</Telefon>
+        <Jelszo>gsdfgs</Jelszo>
+    </Felhasznalo>
+    <Felhasznalo felhasznaloID="6">
+        <Nev>dfsdf</Nev>
+        <Email>gdf</Email>
+        <Telefon>34543</Telefon>
+        <Jelszo>gsdf</Jelszo>
+    </Felhasznalo>
+    <Felhasznalo felhasznaloID="7">
+        <Nev>dfsad</Nev>
+        <Email>wef</Email>
+        <Telefon>fs</Telefon>
+        <Jelszo>fsdafad</Jelszo>
+    </Felhasznalo>
 </Felhasznalok>

@@ -66,7 +66,7 @@ public class KonyvtarosLista implements java.io.Serializable {
             System.out.println(konyvtaros.getKonyvtaros_id() + ": " + konyvtaros.getNev() + ", " + konyvtaros.getEmail() + ", " + konyvtaros.getTelefon() + ", " + konyvtaros.getAlkalmazas_eve() + ", " + konyvtaros.getFizetes());
         }
     }
-    public void mentTxt(String fileName) {
+    public void mentesKonyvtarosTxt(String fileName) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
             oos.writeObject(this);
             System.out.println("Könyvtaroslista sikeresen mentve: " + fileName);
@@ -75,7 +75,7 @@ public class KonyvtarosLista implements java.io.Serializable {
         }
     }
 
-    public static KonyvtarosLista beolvasTxt(String fileName) {
+    public static KonyvtarosLista beolvasKonyvtarosTxt(String fileName) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
             return (KonyvtarosLista) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
@@ -86,7 +86,7 @@ public class KonyvtarosLista implements java.io.Serializable {
 
 
 
-    public void mentsXML(String fileName) {
+    public void mentesKonyvtarosXML(String fileName) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -97,11 +97,12 @@ public class KonyvtarosLista implements java.io.Serializable {
 
             for (Konyvtaros konyvtaros : konyvtarosok) {
                 Element konyvtarosElem = doc.createElement("Konyvtaros");
+                konyvtarosElem.setAttribute("KonyvtarosID",String.valueOf(konyvtaros.getKonyvtaros_id()));
                 root.appendChild(konyvtarosElem);
 
-                Element idElem = doc.createElement("KonyvtarosID");
-                idElem.appendChild(doc.createTextNode(String.valueOf(konyvtaros.getKonyvtaros_id())));
-                konyvtarosElem.appendChild(idElem);
+//                Element idElem = doc.createElement("KonyvtarosID");
+//                idElem.appendChild(doc.createTextNode(String.valueOf(konyvtaros.getKonyvtaros_id())));
+//                konyvtarosElem.appendChild(idElem);
 
                 Element nevElem = doc.createElement("Nev");
                 nevElem.appendChild(doc.createTextNode(konyvtaros.getNev()));
@@ -140,7 +141,7 @@ public class KonyvtarosLista implements java.io.Serializable {
         }
     }
 
-    public static KonyvtarosLista beolvasXML(String fileName) {
+    public static KonyvtarosLista beolvasKonyvtarosXML(String fileName) {
         KonyvtarosLista lista = new KonyvtarosLista();
         try {
             File inputFile = new File(fileName);
@@ -156,7 +157,7 @@ public class KonyvtarosLista implements java.io.Serializable {
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element elem = (Element) node;
 
-                    String konyvtarosIDStr = getElementTextContent(elem, "KonyvtarosID");
+                    String konyvtarosIDStr = elem.getAttribute( "KonyvtarosID");
                     String nev = getElementTextContent(elem, "Nev");
                     String email = getElementTextContent(elem, "Email");
                     String telefon = getElementTextContent(elem, "Telefon");
@@ -193,59 +194,112 @@ public class KonyvtarosLista implements java.io.Serializable {
         }
         return null;
     }
-    public void modositKonyvtarosXML(int konyvtaros_id, String ujNev, String ujEmail, String ujTelefon, int ujEv, int ujFizetes, String ujJelszo, String fileName) {
-        try {
-            // Load the XML file
-            File inputFile = new File(fileName);
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            Document doc = builder.parse(inputFile);
-            doc.getDocumentElement().normalize();
+//    public void modositKonyvtarosXML(int konyvtaros_id, String ujNev, String ujEmail, String ujTelefon, int ujEv, int ujFizetes, String ujJelszo, String fileName) {
+//        try {
+//            // Load the XML file
+//            File inputFile = new File(fileName);
+//            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+//            DocumentBuilder builder = factory.newDocumentBuilder();
+//            Document doc = builder.parse(inputFile);
+//            doc.getDocumentElement().normalize();
+//
+//            // Get all "Konyvtaros" elements
+//            NodeList nodeList = doc.getElementsByTagName("Konyvtaros");
+//            boolean found = false;
+//
+//            // Iterate over each Konyvtaros element and find the one with the given konyvtaros_id
+//            for (int i = 0; i < nodeList.getLength(); i++) {
+//                Node node = nodeList.item(i);
+//
+//                if (node.getNodeType() == Node.ELEMENT_NODE) {
+//                    Element elem = (Element) node;
+//
+//                    // Get the current Konyvtaros ID from the XML
+//                    int id = Integer.parseInt(elem.getElementsByTagName("KonyvtarosID").item(0).getTextContent());
+//
+//                    // If this is the correct Konyvtaros, modify its details
+//                    if (id == konyvtaros_id) {
+//                        elem.getElementsByTagName("Nev").item(0).setTextContent(ujNev);
+//                        elem.getElementsByTagName("Email").item(0).setTextContent(ujEmail);
+//                        elem.getElementsByTagName("Telefon").item(0).setTextContent(ujTelefon);
+//                        elem.getElementsByTagName("AlkalmazasEve").item(0).setTextContent(String.valueOf(ujEv));
+//                        elem.getElementsByTagName("Fizetes").item(0).setTextContent(String.valueOf(ujFizetes));
+//                        elem.getElementsByTagName("Jelszo").item(0).setTextContent(ujJelszo);
+//                        found = true;
+//                        break;
+//                    }
+//                }
+//            }
+//
+//            // If the Konyvtaros is found, save the updated XML to the file
+//            if (found) {
+//                TransformerFactory transformerFactory = TransformerFactory.newInstance();
+//                Transformer transformer = transformerFactory.newTransformer();
+//                transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+//                DOMSource source = new DOMSource(doc);
+//                StreamResult result = new StreamResult(new File(fileName));
+//                transformer.transform(source, result);
+//                System.out.println("Felhasználói adatok sikeresen módosítva XML fájlban.");
+//            } else {
+//                System.out.println("Nem található könyvtáros a megadott ID-val.");
+//            }
+//        } catch (Exception e) {
+//            System.out.println("Hiba történt a módosítás során: " + e.getMessage());
+//        }
+//    }
+public void modositKonyvtarosXML(int konyvtaros_id, String ujNev, String ujEmail, String ujTelefon, int ujEv, int ujFizetes, String ujJelszo, String fileName) {
+    try {
+        // Load the XML file
+        File inputFile = new File(fileName);
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document doc = builder.parse(inputFile);
+        doc.getDocumentElement().normalize();
 
-            // Get all "Konyvtaros" elements
-            NodeList nodeList = doc.getElementsByTagName("Konyvtaros");
-            boolean found = false;
+        // Get all "Konyvtaros" elements
+        NodeList nodeList = doc.getElementsByTagName("Konyvtaros");
+        boolean found = false;
 
-            // Iterate over each Konyvtaros element and find the one with the given konyvtaros_id
-            for (int i = 0; i < nodeList.getLength(); i++) {
-                Node node = nodeList.item(i);
+        // Iterate over each Konyvtaros element and find the one with the given KonyvtarosID attribute
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Node node = nodeList.item(i);
 
-                if (node.getNodeType() == Node.ELEMENT_NODE) {
-                    Element elem = (Element) node;
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element elem = (Element) node;
 
-                    // Get the current Konyvtaros ID from the XML
-                    int id = Integer.parseInt(elem.getElementsByTagName("KonyvtarosID").item(0).getTextContent());
+                // Get the current Konyvtaros ID from the XML (from the attribute)
+                int id = Integer.parseInt(elem.getAttribute("KonyvtarosID"));
 
-                    // If this is the correct Konyvtaros, modify its details
-                    if (id == konyvtaros_id) {
-                        elem.getElementsByTagName("Nev").item(0).setTextContent(ujNev);
-                        elem.getElementsByTagName("Email").item(0).setTextContent(ujEmail);
-                        elem.getElementsByTagName("Telefon").item(0).setTextContent(ujTelefon);
-                        elem.getElementsByTagName("AlkalmazasEve").item(0).setTextContent(String.valueOf(ujEv));
-                        elem.getElementsByTagName("Fizetes").item(0).setTextContent(String.valueOf(ujFizetes));
-                        elem.getElementsByTagName("Jelszo").item(0).setTextContent(ujJelszo);
-                        found = true;
-                        break;
-                    }
+                // If this is the correct Konyvtaros, modify its details
+                if (id == konyvtaros_id) {
+                    elem.getElementsByTagName("Nev").item(0).setTextContent(ujNev);
+                    elem.getElementsByTagName("Email").item(0).setTextContent(ujEmail);
+                    elem.getElementsByTagName("Telefon").item(0).setTextContent(ujTelefon);
+                    elem.getElementsByTagName("AlkalmazasEve").item(0).setTextContent(String.valueOf(ujEv));
+                    elem.getElementsByTagName("Fizetes").item(0).setTextContent(String.valueOf(ujFizetes));
+                    elem.getElementsByTagName("Jelszo").item(0).setTextContent(ujJelszo);
+                    found = true;
+                    break;
                 }
             }
-
-            // If the Konyvtaros is found, save the updated XML to the file
-            if (found) {
-                TransformerFactory transformerFactory = TransformerFactory.newInstance();
-                Transformer transformer = transformerFactory.newTransformer();
-                transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-                DOMSource source = new DOMSource(doc);
-                StreamResult result = new StreamResult(new File(fileName));
-                transformer.transform(source, result);
-                System.out.println("Felhasználói adatok sikeresen módosítva XML fájlban.");
-            } else {
-                System.out.println("Nem található könyvtáros a megadott ID-val.");
-            }
-        } catch (Exception e) {
-            System.out.println("Hiba történt a módosítás során: " + e.getMessage());
         }
+
+        // If the Konyvtaros is found, save the updated XML to the file
+        if (found) {
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File(fileName));
+            transformer.transform(source, result);
+            System.out.println("Felhasználói adatok sikeresen módosítva XML fájlban.");
+        } else {
+            System.out.println("Nem található könyvtáros a megadott ID-val.");
+        }
+    } catch (Exception e) {
+        System.out.println("Hiba történt a módosítás során: " + e.getMessage());
     }
+}
 
 
 
