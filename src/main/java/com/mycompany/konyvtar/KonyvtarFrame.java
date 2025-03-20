@@ -24,6 +24,7 @@ public class KonyvtarFrame extends javax.swing.JFrame {
         felhasznalok = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         kolcsonok = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         fajl = new javax.swing.JMenu();
         betoltesTxtbol = new javax.swing.JMenuItem();
@@ -42,6 +43,11 @@ public class KonyvtarFrame extends javax.swing.JFrame {
         felhaszanloListaz = new javax.swing.JMenuItem();
         felhasznaloModositas = new javax.swing.JMenuItem();
         felhasznaloKereses = new javax.swing.JMenuItem();
+        kolcson = new javax.swing.JMenu();
+        kolcsonHozzaadas = new javax.swing.JMenuItem();
+        kolcsonTorles = new javax.swing.JMenuItem();
+        kolcsonModositas = new javax.swing.JMenuItem();
+        kolcsonKereses = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -88,6 +94,24 @@ public class KonyvtarFrame extends javax.swing.JFrame {
             }
         });
         felhasznalok.setViewportView(jTable2);
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Konyv ID", "Konyv cime", "Felhasznalo ID", "Felhasznalo nev", "Kolcson datum", "Kolcson hatarido"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        kolcsonok.setViewportView(jTable3);
 
         fajl.setText("Fajl");
 
@@ -218,6 +242,42 @@ public class KonyvtarFrame extends javax.swing.JFrame {
 
         jMenuBar1.add(felhasznalo);
 
+        kolcson.setText("Kolcson");
+
+        kolcsonHozzaadas.setText("Hozzaadas");
+        kolcsonHozzaadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kolcsonHozzaadasActionPerformed(evt);
+            }
+        });
+        kolcson.add(kolcsonHozzaadas);
+
+        kolcsonTorles.setText("Torles");
+        kolcsonTorles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kolcsonTorlesActionPerformed(evt);
+            }
+        });
+        kolcson.add(kolcsonTorles);
+
+        kolcsonModositas.setText("Modositas");
+        kolcsonModositas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kolcsonModositasActionPerformed(evt);
+            }
+        });
+        kolcson.add(kolcsonModositas);
+
+        kolcsonKereses.setText("Kereses");
+        kolcsonKereses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kolcsonKeresesActionPerformed(evt);
+            }
+        });
+        kolcson.add(kolcsonKereses);
+
+        jMenuBar1.add(kolcson);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -242,8 +302,8 @@ public class KonyvtarFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(felhasznalok, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
                     .addComponent(konyvek, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE))
-                .addGap(97, 97, 97)
-                .addComponent(kolcsonok, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(kolcsonok, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -256,13 +316,15 @@ public class KonyvtarFrame extends javax.swing.JFrame {
         konyvListaFrissitese();
         felhasznaloLista2=FelhasznaloLista.beolvasFelhasznaloTxt("felhasznaloLista.txt");
         felhasznaloListaFrissitese();
+        kolcsonLista2=KolcsonLista.beolvasKolcsonTxt("kolcsonLista.txt");
+        kolcsonListaFrissitese();
     }//GEN-LAST:event_betoltesTxtbolActionPerformed
 
     private void konyvHozzaadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_konyvHozzaadasActionPerformed
          konyvHozzaadoDialogus dialog = new konyvHozzaadoDialogus(new javax.swing.JFrame(), true);
-    dialog.setLocationRelativeTo(null); // Centers the dialog on the screen
-    dialog.setVisible(true);
-    konyvListaFrissitese();
+         dialog.setLocationRelativeTo(null); // Centers the dialog on the screen
+         dialog.setVisible(true);
+         konyvListaFrissitese();
     }//GEN-LAST:event_konyvHozzaadasActionPerformed
 
     private void konyvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_konyvActionPerformed
@@ -271,24 +333,34 @@ public class KonyvtarFrame extends javax.swing.JFrame {
 
     private void konyvModositasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_konyvModositasActionPerformed
         // TODO add your handling code here:
-        konyvModositoDialogus dialog= new konyvModositoDialogus(new javax.swing.JFrame(), true);
-    dialog.setLocationRelativeTo(null); // Centers the dialog on the screen
-    dialog.setVisible(true);
-    konyvListaFrissitese();
+
+        int  sor = jTable1.getSelectedRow();
+        model = (DefaultTableModel) jTable1.getModel();
+        int kID = Integer.parseInt(model.getValueAt(sor, 0).toString());
+        System.out.println("A kivalasztott ID: " + kID);
+        
+        Konyv k=  new Konyv();
+        
+        k=konyvLista2.getKonyvById(kID);
+
+        konyvModositoDialogus dialog= new konyvModositoDialogus(new javax.swing.JFrame(), true,k);
+        dialog.setLocationRelativeTo(null); // Centers the dialog on the screen
+        dialog.setVisible(true);
+        konyvListaFrissitese();
     }//GEN-LAST:event_konyvModositasActionPerformed
 
     private void konyvTorlesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_konyvTorlesActionPerformed
         // TODO add your handling code here:
         konyvTorloDialogus dialog =new konyvTorloDialogus(new javax.swing.JFrame(), true);
-           dialog.setLocationRelativeTo(null); // Centers the dialog on the screen
-    dialog.setVisible(true);
+        dialog.setLocationRelativeTo(null); // Centers the dialog on the screen
+        dialog.setVisible(true);
     }//GEN-LAST:event_konyvTorlesActionPerformed
 
     private void konyvKeresesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_konyvKeresesActionPerformed
         // TODO add your handling code here:
         konyvKeresoDialogus dialog =new konyvKeresoDialogus(new javax.swing.JFrame(), true);
-                  dialog.setLocationRelativeTo(null); // Centers the dialog on the screen
-    dialog.setVisible(true);
+        dialog.setLocationRelativeTo(null); // Centers the dialog on the screen
+        dialog.setVisible(true);
     }//GEN-LAST:event_konyvKeresesActionPerformed
 
     private void felhasznaloHozzaadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_felhasznaloHozzaadasActionPerformed
@@ -301,24 +373,24 @@ public class KonyvtarFrame extends javax.swing.JFrame {
 
     private void felhaszanloTorlesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_felhaszanloTorlesActionPerformed
         // TODO add your handling code here
-       felhasznaloTorloDialogus dialog = new felhasznaloTorloDialogus(new javax.swing.JFrame(), true);
-                  dialog.setLocationRelativeTo(null); // Centers the dialog on the screen
-    dialog.setVisible(true);
+        felhasznaloTorloDialogus dialog = new felhasznaloTorloDialogus(new javax.swing.JFrame(), true);
+        dialog.setLocationRelativeTo(null); // Centers the dialog on the screen
+        dialog.setVisible(true);
     }//GEN-LAST:event_felhaszanloTorlesActionPerformed
 
     private void felhasznaloModositasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_felhasznaloModositasActionPerformed
         // TODO add your handling code here:
         felhasznaloModsoitoDialogus dialog = new felhasznaloModsoitoDialogus(new javax.swing.JFrame(), true);
-                  dialog.setLocationRelativeTo(null); // Centers the dialog on the screen
-    dialog.setVisible(true);
-    felhasznaloListaFrissitese();
+        dialog.setLocationRelativeTo(null); // Centers the dialog on the screen
+        dialog.setVisible(true);
+        felhasznaloListaFrissitese();
     
     }//GEN-LAST:event_felhasznaloModositasActionPerformed
 
     private void felhasznaloKeresesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_felhasznaloKeresesActionPerformed
-       felhasznaloKeresoDialogus dialog =new felhasznaloKeresoDialogus(new javax.swing.JFrame(), true);
-                  dialog.setLocationRelativeTo(null); // Centers the dialog on the screen
-    dialog.setVisible(true);
+         felhasznaloKeresoDialogus dialog =new felhasznaloKeresoDialogus(new javax.swing.JFrame(), true);
+        dialog.setLocationRelativeTo(null); // Centers the dialog on the screen
+        dialog.setVisible(true);
     }//GEN-LAST:event_felhasznaloKeresesActionPerformed
 
     private void betoltesXMLbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betoltesXMLbolActionPerformed
@@ -326,17 +398,20 @@ public class KonyvtarFrame extends javax.swing.JFrame {
         konyvListaFrissitese();
         felhasznaloLista2=FelhasznaloLista.beolvasFelhasznaloXML("felhasznaloLista.xml");
         felhasznaloListaFrissitese();
+        kolcsonLista2=KolcsonLista.beolvasKolcsonXML("kolcsonLista.xml");
+        kolcsonListaFrissitese();
     }//GEN-LAST:event_betoltesXMLbolActionPerformed
 
     private void mentesTxtbeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mentesTxtbeActionPerformed
         konyvLista2.mentesKonyvTxt("konyvLista.txt");
         felhasznaloLista2.mentesFelhasznaloTxt("felhasznaloLista.txt");
-        
+        kolcsonLista2.mentesKolcsonTxt("kolcsonLista.xml");
     }//GEN-LAST:event_mentesTxtbeActionPerformed
 
     private void mentesXMLbeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mentesXMLbeActionPerformed
         konyvLista2.mentesKonyvXML("konyvekLista2.xml");
         felhasznaloLista2.mentesFelhasznaloXML("felhasznaloLista.xml");
+        kolcsonLista2.mentesKolcsonXML("kolcsonLista.xml");
     }//GEN-LAST:event_mentesXMLbeActionPerformed
 
     private void konyvListazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_konyvListazActionPerformed
@@ -366,7 +441,7 @@ public class KonyvtarFrame extends javax.swing.JFrame {
 
         felhasznaloListaFrissitese();  
     }//GEN-LAST:event_felhaszanloListazActionPerformed
-    public  void felhasznaloListaFrissitese(){
+     public  void felhasznaloListaFrissitese(){
         DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
         model2.setRowCount(0); 
         for (int i = 0; i<felhasznaloLista2.getFelhasznalok().size();i++){
@@ -382,6 +457,45 @@ public class KonyvtarFrame extends javax.swing.JFrame {
             model2.addRow(row2Data);
         } 
     }
+    
+   
+    
+    private void kolcsonTorlesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kolcsonTorlesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kolcsonTorlesActionPerformed
+
+    private void kolcsonHozzaadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kolcsonHozzaadasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kolcsonHozzaadasActionPerformed
+
+    private void kolcsonModositasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kolcsonModositasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kolcsonModositasActionPerformed
+
+    private void kolcsonKeresesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kolcsonKeresesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kolcsonKeresesActionPerformed
+   
+    public  void kolcsonListaFrissitese(){
+        DefaultTableModel model3 = (DefaultTableModel) jTable3.getModel();
+        model3.setRowCount(0); 
+        for (int i = 0; i<kolcsonLista2.getKolcsonLista().size();i++){
+            Kolcson kolcson= new Kolcson();
+            kolcson=kolcsonLista2.getKolcsonLista().get(i);
+            Object[] row3Data = {                   
+                    kolcson.getKonyv().getKonyv_id(),
+                    kolcson.getKonyv().getKonyv_nev(),
+                    kolcson.getFelhasznalo().getFelhasznaloID(),
+                    kolcson.getFelhasznalo().getNev(),
+                    kolcson.getKolcsondatum(),
+                    kolcson.getHatarido()
+            };
+            model3.addRow(row3Data);
+        } 
+    }
+    
+    
+    
     
     /**
      * @param args the command line arguments
@@ -432,6 +546,12 @@ public class KonyvtarFrame extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
+    private javax.swing.JMenu kolcson;
+    private javax.swing.JMenuItem kolcsonHozzaadas;
+    private javax.swing.JMenuItem kolcsonKereses;
+    private javax.swing.JMenuItem kolcsonModositas;
+    private javax.swing.JMenuItem kolcsonTorles;
     private javax.swing.JScrollPane kolcsonok;
     private javax.swing.JMenu konyv;
     private javax.swing.JMenuItem konyvHozzaadas;
@@ -445,8 +565,10 @@ public class KonyvtarFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 public static DefaultTableModel model = new DefaultTableModel();
 public static DefaultTableModel model2 = new DefaultTableModel();
+public static DefaultTableModel model3 = new DefaultTableModel();
 public static KonyvLista konyvLista2 = new KonyvLista();
 public static FelhasznaloLista  felhasznaloLista2 =new FelhasznaloLista();
+public static KolcsonLista kolcsonLista2= new KolcsonLista();
 
 
 }

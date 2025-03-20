@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<KolcsonLista>
+    <Kolcson kolcsonID="1">
+        <KonyvID>1</KonyvID>
+        <KonyvCim>Egy magyar nabob</KonyvCim>
+        <Szerzo>Jokai Mor</Szerzo>
+        <KiadasiEv>1836</KiadasiEv>
+        <ISBN>23423-434-3-534-4</ISBN>
+        <Kiado>Kiadocska</Kiado>
+        <Kolcsonozheto>true</Kolcsonozheto>
+        <FelhasznaloID>2</FelhasznaloID>
+        <FelhasznaloNev>Kovacs Janos</FelhasznaloNev>
+        <Email>kovacs@gmail.com</Email>
+        <Telefon>+40720786678</Telefon>
+        <Jelszo>dk57576fja</Jelszo>
+        <KolcsonDatum>2025-03-19</KolcsonDatum>
+        <Hatarido>2025-07-19</Hatarido>
+    </Kolcson>
+    <Kolcson kolcsonID="2">
+        <KonyvID>2</KonyvID>
+        <KonyvCim>Az arany ember</KonyvCim>
+        <Szerzo>Jokai Mor</Szerzo>
+        <KiadasiEv>1836</KiadasiEv>
+        <ISBN>1223-324-3424</ISBN>
+        <Kiado>Kiado</Kiado>
+        <Kolcsonozheto>true</Kolcsonozheto>
+        <FelhasznaloID>1</FelhasznaloID>
+        <FelhasznaloNev>Denes Alpar</FelhasznaloNev>
+        <Email/>
+        <Telefon/>
+        <Jelszo/>
+        <KolcsonDatum>2025-03-15</KolcsonDatum>
+        <Hatarido>2025-07-15</Hatarido>
+    </Kolcson>
+</KolcsonLista>

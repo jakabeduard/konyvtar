@@ -7,7 +7,9 @@ package com.mycompany.konyvtar;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -50,11 +52,11 @@ public class Konyvtar {
 //
 //        konyvLista.listazKonyvek();
 //        konyvLista.torolKonyv(2);
-        konyvLista.listazKonyvek();
+//        konyvLista.listazKonyvek();
 //
-        konyvLista.updateKonyv(1, "Janos","Petofi Sandor", 1990,"22342-43--3423","KonyvKiad",true );
+//        konyvLista.updateKonyv(1, "Janos","Petofi Sandor", 1990,"22342-43--3423","KonyvKiad",true );
 //        konyvLista.torolKonyv(45);
-        konyvLista.listazKonyvek();
+//        konyvLista.listazKonyvek();
 //        konyvLista.keresKonyv("Janos");
 //        konyvLista.keresKonyv("Az arany ember");
 //        konyvLista.mentesTxt("konyvekLista.txt");
@@ -73,10 +75,10 @@ public class Konyvtar {
         System.out.println("2.Felhasznalok ");
 
 
-//        Felhasznalo felhasznalo1 = new Felhasznalo();
-//        Felhasznalo felhasznalo2 = new Felhasznalo(2, "Kovacs Janos", "kovacs@gmail.com", "+40720786678", "dk57576fja");
-//        felhasznalo1.setFelhasznaloID(1);
-//        felhasznalo1.setNev("Denes Alpar");
+        Felhasznalo felhasznalo1 = new Felhasznalo();
+        Felhasznalo felhasznalo2 = new Felhasznalo(2, "Kovacs Janos", "kovacs@gmail.com", "+40720786678", "dk57576fja");
+        felhasznalo1.setFelhasznaloID(1);
+        felhasznalo1.setNev("Denes Alpar");
 //        felhasznalo1.setEmail("denes@hotmail.com");
 //        felhasznalo1.setTelefon("+40730567845");
 //        felhasznalo1.setJelszo("hdfksdjhf");
@@ -137,5 +139,50 @@ public class Konyvtar {
 //        konyvtarosLista=KonyvtarosLista.beolvasXML("konyvtarosLista.xml");
 //        konyvtarosLista.listazKonyvtarosok();
 
+
+
+//        Kolcson kolcson = null;
+//        Kolcson kolcson2 = null;
+//        try {
+//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//            Date kolcsonDatum = sdf.parse("2025-03-19");
+//            Date hatarido = sdf.parse("2025-07-19");
+//
+//            kolcson = new Kolcson(1,konyv1, felhasznalo2, kolcsonDatum, hatarido);
+//            System.out.println("Kölcsön létrehozva");
+//            System.out.println( kolcson.getKonyv().getKonyv_id()+ " " + kolcson.getKonyv().getKonyv_nev() + " -> "+ kolcson.getFelhasznalo().getFelhasznaloID() +" "+ kolcson.getFelhasznalo().getNev()+" "+ kolcson.getKolcsondatum()+" "+ kolcson.getHatarido());
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        try {
+//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//            Date kolcsonDatum = sdf.parse("2025-03-15");
+//            Date hatarido = sdf.parse("2025-07-15");
+//
+//            kolcson2 = new Kolcson(2,konyv2, felhasznalo1, kolcsonDatum, hatarido);
+//            System.out.println("Kölcsön létrehozva");
+//            System.out.println( kolcson2.getKonyv().getKonyv_id()+ " " + kolcson2.getKonyv().getKonyv_nev() + " -> "+ kolcson2.getFelhasznalo().getFelhasznaloID() +" "+ kolcson2.getFelhasznalo().getNev()+" "+ kolcson2.getKolcsondatum()+" "+ kolcson2.getHatarido());
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        KolcsonLista kolcsonLista1=new KolcsonLista();
+//        System.out.println("tokom");
+//        kolcsonLista1.addKolcson(kolcson);
+//        kolcsonLista1.addKolcson(kolcson2);
+//        kolcsonLista1.listazKolcson();
+//        kolcsonLista1.mentesKolcsonTxt("kolcsonLista.txt");
+//        kolcsonLista1=KolcsonLista.beolvasKolcsonTxt("kolcsonLista.txt");
+//
+//        kolcsonLista1.listazKolcson();
+//        kolcsonLista1.mentesKolcsonXML("kolcsonLista.xml");
+        kolcsonLista1=KolcsonLista.beolvasKolcsonXML("kolcsonLista.xml");
+
+        kolcsonLista1.listazKolcson();
+        kolcsonLista1.mentesKolcsonTxt("kolcsonLista.txt");
+        kolcsonLista1=KolcsonLista.beolvasKolcsonTxt("kolcsonLista.txt");
+        kolcsonLista1.listazKolcson();
     }
 }

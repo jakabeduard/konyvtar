@@ -304,6 +304,14 @@ public class KonyvLista implements java.io.Serializable {
             System.out.println("Hiba történt az XML módosítása során: " + e.getMessage());
         }
     }
+    public Konyv getKonyvById(int konyv_id) {
+        for (Konyv konyv : konyvek) {
+            if (konyv.getKonyv_id() == konyv_id) {
+                return konyv;
+            }
+        }
+        return null; // Ha nincs ilyen ID-jű könyv
+    }
 
 }
 
