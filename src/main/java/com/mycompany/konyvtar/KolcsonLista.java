@@ -38,10 +38,33 @@ public class KolcsonLista  implements java.io.Serializable{
             kolcsonok = new ArrayList<>();
         }
         kolcsonok.add(kolcson);
+        
     }
+//    public int getLastId() {
+//    if (kolcsonok == null || kolcsonok.isEmpty()) {
+//        return 0;
+//    }
+//    int maxId = 0;
+//    for (Kolcson kolcson : kolcsonok) {
+//        if (kolcson.getId() > maxId) {
+//            maxId = kolcson.getId();
+//        }
+//    }
+//    return maxId;
+//    }
+    public int getLastID() {
+    if (this.kolcsonok.isEmpty()) {
+        return -1; // vagy dobhatunk egy kivételt
+    }
+    return this.kolcsonok.get(this.kolcsonok.size() - 1).getId();
+    }
+    
+    
+    
+    
     public void listazKolcson() {
         for (Kolcson kolcson : kolcsonok) {
-            System.out.println( kolcson.getKonyv().getKonyv_id()+ " " + kolcson.getKonyv().getKonyv_nev() + " -> "+ kolcson.getFelhasznalo().getFelhasznaloID() +" "+ kolcson.getFelhasznalo().getNev()+" "+ kolcson.getKolcsondatum()+" "+ kolcson.getHatarido());
+            System.out.println( kolcson.getId()+" "+kolcson.getKonyv().getKonyv_id()+ " " + kolcson.getKonyv().getKonyv_nev() + " -> "+ kolcson.getFelhasznalo().getFelhasznaloID() +" "+ kolcson.getFelhasznalo().getNev()+" "+ kolcson.getKolcsondatum()+" "+ kolcson.getHatarido());
         }
     }
 
@@ -216,5 +239,26 @@ public class KolcsonLista  implements java.io.Serializable{
             return node.getTextContent().trim();
         }
         return ""; // Üres értékkel tér vissza, ha az elem hiányzik
+    }
+    public void torolKolcson(int id) {
+    if (kolcsonok == null || kolcsonok.isEmpty()) {
+        System.out.println("Nincs kölcsönözött könyv a listában.");
+        return;
+    }
+
+    Kolcson torlendo = null;
+    for (Kolcson kolcson : kolcsonok) {
+        if (kolcson.getId() == id) {
+            torlendo = kolcson;
+            break;
+        }
+    }
+
+    if (torlendo != null) {
+        kolcsonok.remove(torlendo);
+        System.out.println("Kölcsön sikeresen törölve: " + id);
+    } else {
+        System.out.println("Nem található ilyen azonosítójú kölcsön: " + id);
+    }
     }
 }

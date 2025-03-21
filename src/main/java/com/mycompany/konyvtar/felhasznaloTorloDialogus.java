@@ -32,23 +32,13 @@ public class felhasznaloTorloDialogus extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel7 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        felhasznaloID = new javax.swing.JTextField();
         felhasznaloTorol = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel7.setText("Felhasznalo torlese");
+        jLabel7.setText("Biztos  torli a felhasznalot?");
 
-        jLabel1.setText("Torlendo felhasznalo ID");
-
-        felhasznaloID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                felhasznaloIDActionPerformed(evt);
-            }
-        });
-
-        felhasznaloTorol.setText("Torol");
+        felhasznaloTorol.setText("Igen");
         felhasznaloTorol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 felhasznaloTorolActionPerformed(evt);
@@ -60,45 +50,27 @@ public class felhasznaloTorloDialogus extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(felhasznaloID, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64)
                 .addComponent(felhasznaloTorol)
-                .addGap(52, 52, 52))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(felhasznaloID, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addComponent(felhasznaloTorol, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(felhasznaloTorol, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void felhasznaloIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_felhasznaloIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_felhasznaloIDActionPerformed
-
     private void felhasznaloTorolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_felhasznaloTorolActionPerformed
-        // TODO add your handling code here:
-
-        String idStr=felhasznaloID.getText();
-        int id = Integer.parseInt(idStr);
-        KonyvtarFrame.felhasznaloLista2.torolFelhasznalo(id);
+    
         dispose();
     }//GEN-LAST:event_felhasznaloTorolActionPerformed
 
@@ -145,9 +117,7 @@ public class felhasznaloTorloDialogus extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField felhasznaloID;
     private javax.swing.JButton felhasznaloTorol;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 }

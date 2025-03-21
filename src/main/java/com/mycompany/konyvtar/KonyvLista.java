@@ -27,15 +27,28 @@ public class KonyvLista implements java.io.Serializable {
 //    }
 //    
 
+
+
+
+    public KonyvLista() {
+        this.konyvek = new ArrayList<>();
+    }
+
+
+    public void modositKolcsonozheto(int konyv_id, boolean ujKolcsonozheto) {
+        Konyv konyv = getKonyvById(konyv_id);
+        if (konyv != null) {
+            konyv.setKolcsonozheto(ujKolcsonozheto);
+            System.out.println("A(z) " + konyv_id + " azonosítójú könyv kölcsönözhetősége módosítva: " + ujKolcsonozheto);
+        } else {
+            System.out.println("Nem található ilyen ID-jű könyv: " + konyv_id);
+        }
+    }
     public int getLastID() {
         if (this.konyvek.isEmpty()) {
             return -1; // vagy dobhatunk egy kivételt
         }
         return this.konyvek.get(this.konyvek.size() - 1).getKonyv_id();
-    }
-
-    public KonyvLista() {
-        this.konyvek = new ArrayList<>();
     }
 
     public void addKonyv(Konyv konyv) {

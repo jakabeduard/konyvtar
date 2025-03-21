@@ -141,43 +141,43 @@ public class Konyvtar {
 
 
 
-//        Kolcson kolcson = null;
-//        Kolcson kolcson2 = null;
-//        try {
-//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//            Date kolcsonDatum = sdf.parse("2025-03-19");
-//            Date hatarido = sdf.parse("2025-07-19");
-//
-//            kolcson = new Kolcson(1,konyv1, felhasznalo2, kolcsonDatum, hatarido);
-//            System.out.println("Kölcsön létrehozva");
-//            System.out.println( kolcson.getKonyv().getKonyv_id()+ " " + kolcson.getKonyv().getKonyv_nev() + " -> "+ kolcson.getFelhasznalo().getFelhasznaloID() +" "+ kolcson.getFelhasznalo().getNev()+" "+ kolcson.getKolcsondatum()+" "+ kolcson.getHatarido());
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        try {
-//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//            Date kolcsonDatum = sdf.parse("2025-03-15");
-//            Date hatarido = sdf.parse("2025-07-15");
-//
-//            kolcson2 = new Kolcson(2,konyv2, felhasznalo1, kolcsonDatum, hatarido);
-//            System.out.println("Kölcsön létrehozva");
-//            System.out.println( kolcson2.getKonyv().getKonyv_id()+ " " + kolcson2.getKonyv().getKonyv_nev() + " -> "+ kolcson2.getFelhasznalo().getFelhasznaloID() +" "+ kolcson2.getFelhasznalo().getNev()+" "+ kolcson2.getKolcsondatum()+" "+ kolcson2.getHatarido());
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        Kolcson kolcson = null;
+        Kolcson kolcson2 = null;
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date kolcsonDatum = sdf.parse("2025-03-19");
+            Date hatarido = sdf.parse("2025-07-19");
+
+            kolcson = new Kolcson(1,konyv1, felhasznalo2, kolcsonDatum, hatarido);
+            System.out.println("Kölcsön létrehozva");
+            System.out.println( kolcson.getKonyv().getKonyv_id()+ " " + kolcson.getKonyv().getKonyv_nev() + " -> "+ kolcson.getFelhasznalo().getFelhasznaloID() +" "+ kolcson.getFelhasznalo().getNev()+" "+ kolcson.getKolcsondatum()+" "+ kolcson.getHatarido());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date kolcsonDatum = sdf.parse("2025-03-15");
+            Date hatarido = sdf.parse("2025-07-15");
+
+            kolcson2 = new Kolcson(2,konyv2, felhasznalo1, kolcsonDatum, hatarido);
+            System.out.println("Kölcsön létrehozva");
+            System.out.println( kolcson2.getKonyv().getKonyv_id()+ " " + kolcson2.getKonyv().getKonyv_nev() + " -> "+ kolcson2.getFelhasznalo().getFelhasznaloID() +" "+ kolcson2.getFelhasznalo().getNev()+" "+ kolcson2.getKolcsondatum()+" "+ kolcson2.getHatarido());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         KolcsonLista kolcsonLista1=new KolcsonLista();
-//        System.out.println("tokom");
-//        kolcsonLista1.addKolcson(kolcson);
-//        kolcsonLista1.addKolcson(kolcson2);
-//        kolcsonLista1.listazKolcson();
-//        kolcsonLista1.mentesKolcsonTxt("kolcsonLista.txt");
-//        kolcsonLista1=KolcsonLista.beolvasKolcsonTxt("kolcsonLista.txt");
-//
-//        kolcsonLista1.listazKolcson();
-//        kolcsonLista1.mentesKolcsonXML("kolcsonLista.xml");
+        System.out.println("tokom");
+        kolcsonLista1.addKolcson(kolcson);
+        kolcsonLista1.addKolcson(kolcson2);
+        kolcsonLista1.listazKolcson();
+        kolcsonLista1.mentesKolcsonTxt("kolcsonLista.txt");
+        kolcsonLista1=KolcsonLista.beolvasKolcsonTxt("kolcsonLista.txt");
+
+        kolcsonLista1.listazKolcson();
+        kolcsonLista1.mentesKolcsonXML("kolcsonLista.xml");
         kolcsonLista1=KolcsonLista.beolvasKolcsonXML("kolcsonLista.xml");
 
         kolcsonLista1.listazKolcson();

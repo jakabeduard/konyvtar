@@ -24,35 +24,23 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="125" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel7" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
-                  <Component id="felhasznaloID" alignment="0" min="-2" pref="263" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Component id="jLabel7" min="-2" pref="146" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
               <Component id="felhasznaloTorol" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+              <EmptySpace pref="98" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel7" min="-2" pref="53" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="felhasznaloID" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
+                  <Component id="jLabel7" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                  <Component id="felhasznaloTorol" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="felhasznaloTorol" min="-2" pref="31" max="-2" attributes="0"/>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace pref="29" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -60,22 +48,12 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Felhasznalo torlese"/>
+        <Property name="text" type="java.lang.String" value="Biztos  torli a felhasznalot?"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Torlendo felhasznalo ID"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="felhasznaloID">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="felhasznaloIDActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="felhasznaloTorol">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Torol"/>
+        <Property name="text" type="java.lang.String" value="Igen"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="felhasznaloTorolActionPerformed"/>

@@ -57,19 +57,17 @@ public class FelhasznaloLista implements java.io.Serializable {
         }
         return talalatok;
     }
+    
+    public Felhasznalo getFelhasznaloByID(int felhasznaloID) {
+    for (Felhasznalo felhasznalo : felhasznalok) {
+        if (felhasznalo.getFelhasznaloID() == felhasznaloID) {
+            return felhasznalo;
+        }
+    }
+    return null; // Ha nincs ilyen felhasználó, akkor null-t ad vissza
+    }
 
-//    public void keresFelhasznalo(String keresett) {
-//        boolean found = false;
-//        for (Felhasznalo felhasznalo : felhasznalok) {
-//            if (felhasznalo.getNev().equalsIgnoreCase(keresett) || felhasznalo.getEmail().equalsIgnoreCase(keresett)) {
-//                System.out.println( felhasznalo.getFelhasznaloID() + ", " + felhasznalo.getNev() + ", " + felhasznalo.getEmail() + ", " + felhasznalo.getTelefon()+", " + felhasznalo.getJelszo());
-//                found = true;
-//            }
-//        }
-//        if (!found) {
-//            System.out.println("Nem található felhasználó a megadott kereséssel: " + keresett);
-//        }
-//    }
+
     public int getLastID() {
         if (this.felhasznalok.isEmpty()) {
             return -1; // vagy dobhatunk egy kivételt

@@ -100,11 +100,11 @@ public class KonyvtarFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Konyv ID", "Konyv cime", "Felhasznalo ID", "Felhasznalo nev", "Kolcson datum", "Kolcson hatarido"
+                "Kolcson ID", "Konyv ID", "Konyv cime", "Felhasznalo ID", "Felhasznalo nev", "Kolcson datum", "Kolcson hatarido"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -244,7 +244,7 @@ public class KonyvtarFrame extends javax.swing.JFrame {
 
         kolcson.setText("Kolcson");
 
-        kolcsonHozzaadas.setText("Hozzaadas");
+        kolcsonHozzaadas.setText("Kolcsonad");
         kolcsonHozzaadas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kolcsonHozzaadasActionPerformed(evt);
@@ -252,7 +252,7 @@ public class KonyvtarFrame extends javax.swing.JFrame {
         });
         kolcson.add(kolcsonHozzaadas);
 
-        kolcsonTorles.setText("Torles");
+        kolcsonTorles.setText("Torol");
         kolcsonTorles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kolcsonTorlesActionPerformed(evt);
@@ -260,7 +260,7 @@ public class KonyvtarFrame extends javax.swing.JFrame {
         });
         kolcson.add(kolcsonTorles);
 
-        kolcsonModositas.setText("Modositas");
+        kolcsonModositas.setText("Modosit");
         kolcsonModositas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kolcsonModositasActionPerformed(evt);
@@ -268,7 +268,7 @@ public class KonyvtarFrame extends javax.swing.JFrame {
         });
         kolcson.add(kolcsonModositas);
 
-        kolcsonKereses.setText("Kereses");
+        kolcsonKereses.setText("Keres");
         kolcsonKereses.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kolcsonKeresesActionPerformed(evt);
@@ -285,15 +285,14 @@ public class KonyvtarFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(kolcsonok)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                         .addComponent(konyvek, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(felhasznalok, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addComponent(kolcsonok)))
+                        .addComponent(felhasznalok, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,8 +302,8 @@ public class KonyvtarFrame extends javax.swing.JFrame {
                     .addComponent(felhasznalok, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
                     .addComponent(konyvek, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(kolcsonok, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(kolcsonok, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -332,15 +331,10 @@ public class KonyvtarFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_konyvActionPerformed
 
     private void konyvModositasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_konyvModositasActionPerformed
-        // TODO add your handling code here:
-
         int  sor = jTable1.getSelectedRow();
         model = (DefaultTableModel) jTable1.getModel();
         int kID = Integer.parseInt(model.getValueAt(sor, 0).toString());
-        System.out.println("A kivalasztott ID: " + kID);
-        
         Konyv k=  new Konyv();
-        
         k=konyvLista2.getKonyvById(kID);
 
         konyvModositoDialogus dialog= new konyvModositoDialogus(new javax.swing.JFrame(), true,k);
@@ -350,14 +344,17 @@ public class KonyvtarFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_konyvModositasActionPerformed
 
     private void konyvTorlesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_konyvTorlesActionPerformed
-        // TODO add your handling code here:
+        int  sor = jTable1.getSelectedRow();
+        model = (DefaultTableModel) jTable1.getModel();
+        int kID = Integer.parseInt(model.getValueAt(sor, 0).toString());
         konyvTorloDialogus dialog =new konyvTorloDialogus(new javax.swing.JFrame(), true);
         dialog.setLocationRelativeTo(null); // Centers the dialog on the screen
         dialog.setVisible(true);
+        konyvLista2.torolKonyv(kID);
+        konyvListaFrissitese();
     }//GEN-LAST:event_konyvTorlesActionPerformed
 
     private void konyvKeresesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_konyvKeresesActionPerformed
-        // TODO add your handling code here:
         konyvKeresoDialogus dialog =new konyvKeresoDialogus(new javax.swing.JFrame(), true);
         dialog.setLocationRelativeTo(null); // Centers the dialog on the screen
         dialog.setVisible(true);
@@ -372,23 +369,32 @@ public class KonyvtarFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_felhasznaloHozzaadasActionPerformed
 
     private void felhaszanloTorlesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_felhaszanloTorlesActionPerformed
-        // TODO add your handling code here
+        int  sor = jTable2.getSelectedRow();
+        model2 = (DefaultTableModel) jTable2.getModel();
+        int fID = Integer.parseInt(model2.getValueAt(sor, 0).toString());
         felhasznaloTorloDialogus dialog = new felhasznaloTorloDialogus(new javax.swing.JFrame(), true);
         dialog.setLocationRelativeTo(null); // Centers the dialog on the screen
         dialog.setVisible(true);
+        felhasznaloLista2.torolFelhasznalo(fID);
+        felhasznaloListaFrissitese();
+        
     }//GEN-LAST:event_felhaszanloTorlesActionPerformed
 
     private void felhasznaloModositasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_felhasznaloModositasActionPerformed
-        // TODO add your handling code here:
-        felhasznaloModsoitoDialogus dialog = new felhasznaloModsoitoDialogus(new javax.swing.JFrame(), true);
+        int  sor = jTable2.getSelectedRow();
+        model2 = (DefaultTableModel) jTable2.getModel();
+        int fID = Integer.parseInt(model2.getValueAt(sor, 0).toString());
+        Felhasznalo f= new Felhasznalo();
+        f=felhasznaloLista2.getFelhasznaloByID(fID);
+       
+        felhasznaloModsoitoDialogus dialog = new felhasznaloModsoitoDialogus(new javax.swing.JFrame(), true,f);
         dialog.setLocationRelativeTo(null); // Centers the dialog on the screen
         dialog.setVisible(true);
         felhasznaloListaFrissitese();
-    
     }//GEN-LAST:event_felhasznaloModositasActionPerformed
 
     private void felhasznaloKeresesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_felhasznaloKeresesActionPerformed
-         felhasznaloKeresoDialogus dialog =new felhasznaloKeresoDialogus(new javax.swing.JFrame(), true);
+        felhasznaloKeresoDialogus dialog =new felhasznaloKeresoDialogus(new javax.swing.JFrame(), true);
         dialog.setLocationRelativeTo(null); // Centers the dialog on the screen
         dialog.setVisible(true);
     }//GEN-LAST:event_felhasznaloKeresesActionPerformed
@@ -436,12 +442,11 @@ public class KonyvtarFrame extends javax.swing.JFrame {
             model.addRow(rowData);
         } 
     }
-    
     private void felhaszanloListazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_felhaszanloListazActionPerformed
 
         felhasznaloListaFrissitese();  
     }//GEN-LAST:event_felhaszanloListazActionPerformed
-     public  void felhasznaloListaFrissitese(){
+    public  void felhasznaloListaFrissitese(){
         DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
         model2.setRowCount(0); 
         for (int i = 0; i<felhasznaloLista2.getFelhasznalok().size();i++){
@@ -457,15 +462,62 @@ public class KonyvtarFrame extends javax.swing.JFrame {
             model2.addRow(row2Data);
         } 
     }
-    
-   
-    
     private void kolcsonTorlesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kolcsonTorlesActionPerformed
-        // TODO add your handling code here:
+//        int  sor = jTable3.getSelectedRow();
+//        model3 = (DefaultTableModel) jTable3.getModel();
+//        int kolcsID = Integer.parseInt(model3.getValueAt(sor, 0).toString());
+//        int konyvID = Integer.parseInt(model3.getValueAt(sor, 1).toString());
+//        
+//        konyvLista2.modositKolcsonozheto(konyvID, true);
+//        konyvListaFrissitese();
+//        kolcsonLista2.torolKolcson(kolcsID);
+//        kolcsonListaFrissitese();
+    int sor = jTable3.getSelectedRow();
+    if (sor == -1) {
+        // Ha nincs kijelölt sor, ne csináljon semmit
+        javax.swing.JOptionPane.showMessageDialog(this, "Kérlek válassz ki egy kölcsöntörlést!");
+        return;
+    }
+
+    // Megjelenítjük a megerősítő párbeszédablakot
+    kolcsonTorloDialogus dialog = new kolcsonTorloDialogus(this, true);
+    dialog.setLocationRelativeTo(this); // Az aktuális ablak közepére helyezi
+    dialog.setVisible(true);
+
+    // Ha a párbeszédablak bezáródik, végrehajtjuk a törlést
+    model3 = (DefaultTableModel) jTable3.getModel();
+    int kolcsID = Integer.parseInt(model3.getValueAt(sor, 0).toString());
+    int konyvID = Integer.parseInt(model3.getValueAt(sor, 1).toString());
+
+    konyvLista2.modositKolcsonozheto(konyvID, true);
+    konyvListaFrissitese();
+    kolcsonLista2.torolKolcson(kolcsID);
+    kolcsonListaFrissitese();
+        
+        
+        
     }//GEN-LAST:event_kolcsonTorlesActionPerformed
 
     private void kolcsonHozzaadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kolcsonHozzaadasActionPerformed
-        // TODO add your handling code here:
+        int  sor = jTable1.getSelectedRow();
+        model = (DefaultTableModel) jTable1.getModel();
+        int kID = Integer.parseInt(model.getValueAt(sor, 0).toString());
+        Boolean igen=false;
+        konyvLista2.modositKolcsonozheto(kID,igen);
+        Konyv k=  new Konyv();
+        k=konyvLista2.getKonyvById(kID);
+        konyvListaFrissitese();
+        
+        int  sor2 = jTable2.getSelectedRow();
+        model2 = (DefaultTableModel) jTable2.getModel();
+        int fID = Integer.parseInt(model2.getValueAt(sor2, 0).toString());
+        Felhasznalo f= new Felhasznalo();
+        f=felhasznaloLista2.getFelhasznaloByID(fID);
+         
+        kolcsonHozzaadas dialog = new kolcsonHozzaadas(this, true,k,f); // 'this' = főablak referenciája, 'true' = modális
+        dialog.setLocationRelativeTo(this); // Középre helyezés
+        dialog.setVisible(true);
+        kolcsonListaFrissitese();
     }//GEN-LAST:event_kolcsonHozzaadasActionPerformed
 
     private void kolcsonModositasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kolcsonModositasActionPerformed
@@ -482,7 +534,8 @@ public class KonyvtarFrame extends javax.swing.JFrame {
         for (int i = 0; i<kolcsonLista2.getKolcsonLista().size();i++){
             Kolcson kolcson= new Kolcson();
             kolcson=kolcsonLista2.getKolcsonLista().get(i);
-            Object[] row3Data = {                   
+            Object[] row3Data = {  
+                    kolcson.getId(),
                     kolcson.getKonyv().getKonyv_id(),
                     kolcson.getKonyv().getKonyv_nev(),
                     kolcson.getFelhasznalo().getFelhasznaloID(),
@@ -493,9 +546,7 @@ public class KonyvtarFrame extends javax.swing.JFrame {
             model3.addRow(row3Data);
         } 
     }
-    
-    
-    
+ 
     
     /**
      * @param args the command line arguments
@@ -569,6 +620,7 @@ public static DefaultTableModel model3 = new DefaultTableModel();
 public static KonyvLista konyvLista2 = new KonyvLista();
 public static FelhasznaloLista  felhasznaloLista2 =new FelhasznaloLista();
 public static KolcsonLista kolcsonLista2= new KolcsonLista();
+//private javax.swing.JComboBox<String> jComboBox1;
 
 
 }
