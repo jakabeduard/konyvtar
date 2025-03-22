@@ -9,6 +9,7 @@ import static com.mycompany.konyvtar.KonyvtarFrame.model2;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 
@@ -99,12 +100,11 @@ public class kolcsonHozzaadas extends javax.swing.JDialog {
        kolcson.setKonyv(konyv);
        kolcson.setFelhasznalo(felhasznalo);
        LocalDate today = LocalDate.now();
-       Date date = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
-       kolcson.setKolcsondatum(date);
+       kolcson.setKolcsondatum(today);
+       
        int idotartam=Integer.parseInt(kolcsonIdotartam.getText());
-       LocalDate futureDate = today.plusMonths(idotartam);
-       Date date2 = Date.from(futureDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-       kolcson.setHatarido(date2);
+       LocalDate lejaratiIdo = today.plusMonths(idotartam);
+       kolcson.setHatarido(lejaratiIdo);
        KonyvtarFrame.kolcsonLista2.addKolcson(kolcson);
        dispose();
     }//GEN-LAST:event_kolcsonGombActionPerformed

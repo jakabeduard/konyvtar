@@ -32,4 +32,36 @@
         <KolcsonDatum>2025-03-21</KolcsonDatum>
         <Hatarido>2025-12-21</Hatarido>
     </Kolcson>
+    <Kolcson kolcsonID="2">
+        <KonyvID>10</KonyvID>
+        <KonyvCim>A Hobbit</KonyvCim>
+        <Szerzo>J.R.R. Tolkien</Szerzo>
+        <KiadasiEv>1937</KiadasiEv>
+        <ISBN>978-963-07-6543-2</ISBN>
+        <Kiado>Európa Könyvkiadó</Kiado>
+        <Kolcsonozheto>false</Kolcsonozheto>
+        <FelhasznaloID>6</FelhasznaloID>
+        <FelhasznaloNev>Mária Kiss</FelhasznaloNev>
+        <Email>maria.kiss@example.com</Email>
+        <Telefon>06801234567</Telefon>
+        <Jelszo>kiss321</Jelszo>
+        <KolcsonDatum>2025-03-22</KolcsonDatum>
+        <Hatarido>2025-06-22</Hatarido>
+    </Kolcson>
+    <Kolcson kolcsonID="3">
+        <KonyvID>4</KonyvID>
+        <KonyvCim>1984</KonyvCim>
+        <Szerzo>George Orwell</Szerzo>
+        <KiadasiEv>1949</KiadasiEv>
+        <ISBN>978-963-07-7386-5</ISBN>
+        <Kiado>Európa Könyvkiadó</Kiado>
+        <Kolcsonozheto>false</Kolcsonozheto>
+        <FelhasznaloID>3</FelhasznaloID>
+        <FelhasznaloNev>Balázs Németh</FelhasznaloNev>
+        <Email>balazs.nemeth@example.com</Email>
+        <Telefon>06501234567</Telefon>
+        <Jelszo>balazs123</Jelszo>
+        <KolcsonDatum>2025-03-22</KolcsonDatum>
+        <Hatarido>2025-09-22</Hatarido>
+    </Kolcson>
 </KolcsonLista>

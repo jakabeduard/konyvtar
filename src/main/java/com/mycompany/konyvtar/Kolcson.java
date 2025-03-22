@@ -1,6 +1,7 @@
 package com.mycompany.konyvtar;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -8,18 +9,14 @@ public class Kolcson implements Serializable {
     private int id;
     private Konyv konyv;
     private Felhasznalo felhasznalo;
-    private Date kolcsondatum;
-    private Date hatarido;
+    private LocalDate kolcsondatum;
+    private LocalDate hatarido;
 
     public Kolcson() {
-        this.id = 0;
-        this.konyv = null;
-        this.felhasznalo = null;
-        this.kolcsondatum = new Date();
-        this.hatarido = new Date();
+        
     }
 
-    public Kolcson(int id, Konyv konyv, Felhasznalo felhasznalo, Date kolcsondatum, Date hatarido) {
+    public Kolcson(int id, Konyv konyv, Felhasznalo felhasznalo, LocalDate kolcsondatum, LocalDate hatarido) {
         this.id = id;
         this.konyv = konyv;
         this.felhasznalo = felhasznalo;
@@ -52,19 +49,19 @@ public class Kolcson implements Serializable {
         this.felhasznalo = felhasznalo;
     }
 
-    public Date getKolcsondatum() {
+    public LocalDate getKolcsondatum() {
         return kolcsondatum;
     }
 
-    public void setKolcsondatum(Date kolcsondatum) {
+    public void setKolcsondatum(LocalDate kolcsondatum) {
         this.kolcsondatum = kolcsondatum;
     }
 
-    public Date getHatarido() {
+    public LocalDate getHatarido() {
         return hatarido;
     }
 
-    public void setHatarido(Date hatarido) {
+    public void setHatarido(LocalDate hatarido) {
         this.hatarido = hatarido;
     }
 }
