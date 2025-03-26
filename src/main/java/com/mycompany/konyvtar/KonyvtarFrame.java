@@ -521,11 +521,22 @@ public class KonyvtarFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_kolcsonHozzaadasActionPerformed
 
     private void kolcsonModositasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kolcsonModositasActionPerformed
-        // TODO add your handling code here:
+        int  sor = jTable3.getSelectedRow();
+        model3 = (DefaultTableModel) jTable3.getModel();
+        int fID = Integer.parseInt(model3.getValueAt(sor, 0).toString());
+        Kolcson k= new Kolcson();
+        k=kolcsonLista2.keresKolcsonID(fID);
+       
+        kolcsonModositoDialogus dialog = new kolcsonModositoDialogus(new javax.swing.JFrame(), true,k);
+        dialog.setLocationRelativeTo(null); // Centers the dialog on the screen
+        dialog.setVisible(true);
+        kolcsonListaFrissitese();
     }//GEN-LAST:event_kolcsonModositasActionPerformed
 
     private void kolcsonKeresesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kolcsonKeresesActionPerformed
-        // TODO add your handling code here:
+        keresKolcsonDialogus dialog =new keresKolcsonDialogus(new javax.swing.JFrame(), true);
+        dialog.setLocationRelativeTo(null); // Centers the dialog on the screen
+        dialog.setVisible(true);
     }//GEN-LAST:event_kolcsonKeresesActionPerformed
    
     public  void kolcsonListaFrissitese(){

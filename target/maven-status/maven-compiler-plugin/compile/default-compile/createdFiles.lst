@@ -2,6 +2,7 @@ com\mycompany\konyvtar\kolcsonHozzaadas$1.class
 com\mycompany\konyvtar\kolcsonTorloDialogus$2$1.class
 com\mycompany\konyvtar\felhasznaloModsoitoDialogus$5.class
 com\mycompany\konyvtar\KonyvtarFrame$5.class
+com\mycompany\konyvtar\keresKolcsonDialogus$1.class
 com\mycompany\konyvtar\konyvModositoDialogus$3.class
 com\mycompany\konyvtar\konyvModositoDialogus$7.class
 com\mycompany\konyvtar\felhasznaloKeresoDialogus.class
@@ -24,6 +25,7 @@ com\mycompany\konyvtar\Konyv.class
 com\mycompany\konyvtar\felhasznaloModsoitoDialogus$6.class
 com\mycompany\konyvtar\konyvModositoDialogus$4.class
 com\mycompany\konyvtar\felhasznaloTorloDialogus.class
+com\mycompany\konyvtar\keresKolcsonDialogus$2$1.class
 com\mycompany\konyvtar\KonyvtarFrame$6.class
 com\mycompany\konyvtar\konyvHozzaadoDialogus$2.class
 com\mycompany\konyvtar\felhasznaloHozzadoDialogus$3.class
@@ -32,6 +34,7 @@ com\mycompany\konyvtar\KonyvtarFrame$2.class
 com\mycompany\konyvtar\Kolcson.class
 com\mycompany\konyvtar\konyvKeresoDialogus.class
 com\mycompany\konyvtar\konyvKeresoDialogus$1.class
+com\mycompany\konyvtar\keresKolcsonDialogus.class
 com\mycompany\konyvtar\konyvModositoDialogus$1.class
 com\mycompany\konyvtar\felhasznaloHozzadoDialogus$6.class
 com\mycompany\konyvtar\Felhasznalo.class
@@ -40,6 +43,7 @@ com\mycompany\konyvtar\felhasznaloTorloDialogus$2.class
 com\mycompany\konyvtar\KonyvtarFrame$20.class
 com\mycompany\konyvtar\KonyvtarFrame$23.class
 com\mycompany\konyvtar\KonyvtarFrame$9.class
+com\mycompany\konyvtar\kolcsonModositoDialogus.class
 com\mycompany\konyvtar\kolcsonTorloDialogus$2.class
 com\mycompany\konyvtar\KonyvtarFrame$18.class
 com\mycompany\konyvtar\felhasznaloTorloDialogus$1.class
@@ -66,6 +70,8 @@ com\mycompany\konyvtar\konyvTorloDialogus.class
 com\mycompany\konyvtar\KonyvtarFrame$22.class
 com\mycompany\konyvtar\konyvHozzaadoDialogus$6.class
 com\mycompany\konyvtar\kolcsonTorloDialogus.class
+com\mycompany\konyvtar\keresKolcsonDialogus$2.class
+com\mycompany\konyvtar\kolcsonModositoDialogus$1.class
 com\mycompany\konyvtar\KonyvtarFrame$7.class
 com\mycompany\konyvtar\Konyvtar.class
 com\mycompany\konyvtar\KonyvtarFrame$1.class

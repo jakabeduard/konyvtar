@@ -25,6 +25,7 @@ public class KolcsonLista  implements java.io.Serializable{
 
     public KolcsonLista() {}
 
+
     public KolcsonLista(ArrayList<Kolcson> kolcsonLista) {
         this.kolcsonok = kolcsonLista;
     }
@@ -42,6 +43,45 @@ public class KolcsonLista  implements java.io.Serializable{
         kolcsonok.add(kolcson);
         
     }
+    public List<Kolcson> keresKolcson(String keresesiErtek) {
+        List<Kolcson> talalatok = new ArrayList<>();
+        for (Kolcson kolcson : kolcsonok) {
+            if (kolcson.getFelhasznalo().getNev().equalsIgnoreCase(keresesiErtek) ||
+                    kolcson.getKonyv().getKonyv_nev().equalsIgnoreCase(keresesiErtek)) {
+                talalatok.add(kolcson);
+            }
+        }
+        return talalatok;
+    }
+    
+    public Kolcson keresKolcsonID(int id) {
+    for (Kolcson kolcson : kolcsonok) {
+        if (kolcson.getId() == id) {
+            return kolcson; // Ha megtaláltuk az ID-hez tartozó kölcsönt, visszaadjuk
+        }
+    }
+    return null; // Ha nincs ilyen ID-jű kölcsön, akkor null-t adunk vissza
+    }
+    public void updateKolcsonById(int id, Konyv ujKonyv, Felhasznalo ujFelhasznalo, LocalDate ujKolcsondatum, LocalDate ujHatarido) {
+    boolean found = false;
+    
+    for (Kolcson kolcson : kolcsonok) {
+        if (kolcson.getId() == id) {
+            kolcson.setKonyv(ujKonyv);
+            kolcson.setFelhasznalo(ujFelhasznalo);
+            kolcson.setKolcsondatum(ujKolcsondatum);
+            kolcson.setHatarido(ujHatarido);
+            found = true;
+            System.out.println("Kölcsön adatai sikeresen frissítve: " + id);
+            break;
+        }
+    }
+    
+    if (!found) {
+        System.out.println("Nem található ilyen azonosítójú kölcsön: " + id);
+    }
+}
+    
 //    public int getLastId() {
 //    if (kolcsonok == null || kolcsonok.isEmpty()) {
 //        return 0;
